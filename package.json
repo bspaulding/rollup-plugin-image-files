@@ -1,0 +1,28 @@
+{
+  "name": "rollup-plugin-image-files",
+  "version": "1.0.0",
+  "description": "Like rollup-plugin-image, but writes image files to dest instead of inlining base64.",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bspaulding/rollup-plugin-image-files.git"
+  },
+  "keywords": [
+    "rollup-plugin",
+    "image"
+  ],
+  "author": "Bradley J. Spaulding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bspaulding/rollup-plugin-image-files/issues"
+  },
+  "homepage": "https://github.com/bspaulding/rollup-plugin-image-files#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.10.0"
+  }
+}
