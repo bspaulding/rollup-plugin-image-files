@@ -2,9 +2,13 @@
   "name": "rollup-plugin-image-files",
   "version": "1.0.0",
   "description": "Like rollup-plugin-image, but writes image files to dest instead of inlining base64.",
-  "main": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "scripts": {
-    "lint": "eslint src"
+    "build": "rollup -c -f cjs -o dist/index.cjs.js && rollup -c -f es -o dist/index.es.js",
+    "lint": "eslint src",
+    "prepublish": "NODE_ENV=production npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,9 @@
     "url": "https://github.com/bspaulding/rollup-plugin-image-files/issues"
   },
   "homepage": "https://github.com/bspaulding/rollup-plugin-image-files#readme",
-  "dependencies": {},
+  "dependencies": {
+    "rollup-pluginutils": "^1.5.2"
+  },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
     "eslint": "^3.10.0",
