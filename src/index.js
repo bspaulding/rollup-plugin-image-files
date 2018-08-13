@@ -32,7 +32,7 @@ export default function image(options = {}) {
 			return { ast, code, map: { mappings: '' } };
 		},
 		ongenerate(options, rendered) {
-			const dir = dirname(options.dest);
+			const dir = dirname(options.dest || options.file);
 			images.forEach(id => {
 				writeFileSync(`${dir}/${basename(id)}`, readFileSync(id));
 			});
