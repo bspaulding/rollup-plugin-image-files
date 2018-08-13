@@ -1,4 +1,10 @@
 export default {
-	entry: 'src/index.js',
-	dest: 'dist/index.cjs.js'
+	input: 'src/index.js',
+	output: [{
+		file: 'dist/index.cjs.js',
+		format: 'cjs'
+	}, {
+		file: 'dist/index.es.js',
+		format: 'es'
+	}]
 };
