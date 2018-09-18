@@ -19,17 +19,7 @@ export default function image(options = {}) {
 			if (images.indexOf(id) < 0) {
 				images.push(id);
 			}
-			const code = `const img = require('./${basename(id)}'); export default img;`;
-
-			const ast = {
-				type: 'Program',
-				sourceType: 'module',
-				start: 0,
-				end: null,
-				body: []
-			};
-
-			return { ast, code, map: { mappings: '' } };
+			return `const img = require('./${basename(id)}'); export default img;`;
 		},
 		ongenerate(options, rendered) {
 			const dir = dirname(options.dest || options.file);
