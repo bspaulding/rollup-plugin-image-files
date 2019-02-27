@@ -9,7 +9,7 @@
     "build": "rollup -c -f cjs -o dist/index.cjs.js && rollup -c -f es -o dist/index.es.js",
     "lint": "eslint src",
     "prepublish": "NODE_ENV=production npm run build",
-    "test": "cd test && rollup -c"
+    "test": "cd test && rm -rf output && rollup -c"
   },
   "repository": {
     "type": "git",
