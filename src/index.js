@@ -2,10 +2,15 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { basename, dirname } from 'path';
 import { createFilter } from 'rollup-pluginutils';
 
-const extensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg'];
-const includes = extensions.map(e => `**/*${e}`);
-
 export default function image(options = {}) {
+	const extensions = options.extensions || [
+		'.jpg',
+		'.jpeg',
+		'.png',
+		'.gif',
+		'.svg'
+	];
+	const includes = extensions.map(e => `**/*${e}`);
 	const filter = createFilter(options.include || includes, options.exclude);
 	let images = [];
 
@@ -21,7 +26,7 @@ export default function image(options = {}) {
 			}
 			return `const img = require('./${basename(id)}'); export default img;`;
 		},
-		ongenerate(options, rendered) {
+		generateBundle(options, rendered) {
 			const dir = dirname(options.dest || options.file);
 			if (!existsSync(dir)) {
 				mkdirSync(dir);
