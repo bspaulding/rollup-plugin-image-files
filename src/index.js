@@ -14,6 +14,16 @@ export default function image(options = {}) {
 	const filter = createFilter(options.include || includes, options.exclude);
 	let images = [];
 
+	function generateBundle(options, rendered) {
+		const dir = dirname(options.dest || options.file);
+		if (!existsSync(dir)) {
+			mkdirSync(dir);
+		}
+		images.forEach(id => {
+			writeFileSync(`${dir}/${basename(id)}`, readFileSync(id));
+		});
+	}
+
 	return {
 		name: 'image-file',
 		load(id) {
@@ -26,14 +36,7 @@ export default function image(options = {}) {
 			}
 			return `const img = require('./${basename(id)}'); export default img;`;
 		},
-		generateBundle(options, rendered) {
-			const dir = dirname(options.dest || options.file);
-			if (!existsSync(dir)) {
-				mkdirSync(dir);
-			}
-			images.forEach(id => {
-				writeFileSync(`${dir}/${basename(id)}`, readFileSync(id));
-			});
-		}
+		generateBundle,
+		ongenerate: generateBundle
 	};
 }
