@@ -8,6 +8,8 @@
   "scripts": {
     "build": "rollup -c -f cjs -o dist/index.cjs.js && rollup -c -f es -o dist/index.es.js",
     "lint": "eslint src",
+    "prettier:check": "prettier --check **/*.js",
+    "prettier:fix": "prettier --check **/*.js",
     "prepublish": "NODE_ENV=production npm run build",
     "test": "cd test && rm -rf output && rollup -c"
   },
