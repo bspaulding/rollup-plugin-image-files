@@ -2,14 +2,10 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { basename, dirname } from 'path';
 import { createFilter } from 'rollup-pluginutils';
 
+const defaultExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg'];
+
 export default function image(options = {}) {
-	const extensions = options.extensions || [
-		'.jpg',
-		'.jpeg',
-		'.png',
-		'.gif',
-		'.svg'
-	];
+	const extensions = options.extensions || defaultExtensions;
 	const includes = extensions.map(e => `**/*${e}`);
 	const filter = createFilter(options.include || includes, options.exclude);
 	let images = [];
