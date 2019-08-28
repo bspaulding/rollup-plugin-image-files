@@ -11,7 +11,7 @@
     "prettier:check": "prettier --check **/*.js",
     "prettier:fix": "prettier --check **/*.js",
     "prepublish": "NODE_ENV=production npm run build",
-    "test": "cd test && rm -rf output && rollup -c"
+    "test": "cd test && rm -rf output && rollup -c && diff expected-output-bundle.js output/bundle.js"
   },
   "repository": {
     "type": "git",
