@@ -23,7 +23,7 @@ export default function image(options = {}) {
 	return {
 		name: 'image-file',
 		load(id) {
-			if (!filter(id)) {
+			if ('string' !== typeof id || !filter(id)) {
 				return null;
 			}
 
