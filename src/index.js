@@ -11,7 +11,7 @@ export default function image(options = {}) {
 	let images = [];
 
 	function generateBundle(options, rendered) {
-		const dir = dirname(options.dest || options.file);
+		const dir = options.dir || dirname(options.dest || options.file);
 		if (!existsSync(dir)) {
 			mkdirSync(dir);
 		}
