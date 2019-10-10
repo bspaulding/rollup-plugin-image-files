@@ -1,5 +1,7 @@
 # rollup-plugin-image-files
 
+![Build Status](https://github.com/bspaulding/rollup-plugin-image-files/workflows/Node%20CI/badge.svg)
+
 Like rollup-plugin-image, but writes image files to dest instead of inlining base64.
 This was written for a library that would be consumed by react-native applications.
 
