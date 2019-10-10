@@ -10,8 +10,8 @@ export default function image(options = {}) {
 	const filter = createFilter(options.include || includes, options.exclude);
 	let images = [];
 
-	function generateBundle(options, rendered) {
-		const dir = options.dir || dirname(options.dest || options.file);
+	function generateBundle(outputOptions, rendered) {
+		const dir = outputOptions.dir || dirname(outputOptions.dest || outputOptions.file);
 		if (!existsSync(dir)) {
 			mkdirSync(dir);
 		}
