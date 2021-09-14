@@ -12,9 +12,11 @@ export default function image(options = {}) {
 
 	function generateBundle(outputOptions, rendered) {
 		const dir =
-			outputOptions.dir || dirname(outputOptions.dest || outputOptions.file);
+			options.output ||
+			outputOptions.dir ||
+			dirname(outputOptions.dest || outputOptions.file);
 		if (!existsSync(dir)) {
-			mkdirSync(dir);
+			mkdirSync(dir, { recursive: true });
 		}
 		images.forEach(id => {
 			writeFileSync(`${dir}/${basename(id)}`, readFileSync(id));
@@ -31,7 +33,9 @@ export default function image(options = {}) {
 			if (images.indexOf(id) < 0) {
 				images.push(id);
 			}
-			return `const img = require('./${basename(id)}'); export default img;`;
+			return `const img = require('./${basename(
+				id
+			)}').default; export default img;`;
 		},
 		generateBundle,
 		ongenerate: generateBundle

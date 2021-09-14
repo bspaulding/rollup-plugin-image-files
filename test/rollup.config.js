@@ -6,5 +6,9 @@ export default {
 		file: './output/bundle.js',
 		format: 'cjs'
 	},
-	plugins: [image()]
+	plugins: [
+		image({
+			output: './output/images'
+		})
+	]
 };
