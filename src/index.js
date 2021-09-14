@@ -33,9 +33,9 @@ export default function image(options = {}) {
 			if (images.indexOf(id) < 0) {
 				images.push(id);
 			}
-			return `const img = require('./${basename(
-				id
-			)}').default; export default img;`;
+			return `const img = require('${
+				options.output ? options.output : '.'
+			}/${basename(id)}').default; export default img;`;
 		},
 		generateBundle,
 		ongenerate: generateBundle

@@ -1,5 +1,5 @@
 'use strict';
 
-const img = require('./rollup-logo.svg').default;
+const img = require('./output/images/rollup-logo.svg').default;
 
 console.log('Success!');
