@@ -14,7 +14,7 @@ export default function image(options = {}) {
 		const dir =
 			outputOptions.dir || dirname(outputOptions.dest || outputOptions.file);
 		if (!existsSync(dir)) {
-			mkdirSync(dir);
+			mkdirSync(dir, { recursive: true });
 		}
 		images.forEach(id => {
 			writeFileSync(`${dir}/${basename(id)}`, readFileSync(id));
